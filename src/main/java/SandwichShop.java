@@ -19,7 +19,8 @@ public class SandwichShop {
         double largePrice = 8.95;
         double discountSeniorPercentage = 0.2;
         double discountChildPercentage = 0.1;
-        double discountedPrice = 0;
+        double regularLoadedPrice = 1.00;
+        double largeLoadedPrice = 1.75;
         String selectedSandwich;
         double selectedSandwichPrice;
         double finalPrice;
@@ -46,6 +47,21 @@ public class SandwichShop {
             System.out.println("Sorry, that sandwich is not a valid choice.");
             selectedSandwich = "Invalid choice";
             selectedSandwichPrice = 0;
+        }
+
+        System.out.println("Would you like your sandwich loaded? (yes/no)");
+        String sandwichLoaded = input.next();
+
+        if (sandwichLoaded.equalsIgnoreCase("yes")) {
+            if (sandwichChoice == 1) {
+
+                selectedSandwichPrice += regularLoadedPrice;
+                selectedSandwich = selectedSandwich + " (loaded) ";
+            } else if (sandwichChoice == 2) {
+                selectedSandwichPrice += largeLoadedPrice;
+                selectedSandwich = selectedSandwich + " (loaded) ";
+            }
+
         }
 
 
@@ -79,12 +95,12 @@ public class SandwichShop {
 //        System.out.printf("Sandwich choice is: %d which is a %s and cost $%.2f \n", sandwichChoice, selectedSandwich, selectedSandwichPrice);
 //        System.out.printf("Your total for %s: $%.2f \n", selectedSandwich, finalPrice);
 
-        System.out.println("|======RECIEPT======|");
-        System.out.printf("Customer: Demo \n");
+        System.out.println("|======RECEIPT======|");
+        System.out.println("Customer: Demo \n");
         System.out.printf("%s: $%.2f \n", selectedSandwich, selectedSandwichPrice);
-       if (appliedDiscount) {
+        if (appliedDiscount) {
            System.out.printf("Applied Discount: %.0f%%  \n", appliedDiscountPercentage * 100);
-       }
+        }
         System.out.printf("Total: $%.2f \n", finalPrice);
         System.out.printf("|======| %s |======|", finalOutput);
 
