@@ -82,7 +82,7 @@ public class SandwichShop {
         System.out.println("|======RECIEPT======|");
         System.out.printf("Customer: Demo \n");
         System.out.printf("%s: $%.2f \n", selectedSandwich, selectedSandwichPrice);
-       if (appliedDiscount == true) {
+       if (appliedDiscount) {
            System.out.printf("Applied Discount: %.0f%%  \n", appliedDiscountPercentage * 100);
        }
         System.out.printf("Total: $%.2f \n", finalPrice);
