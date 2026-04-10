@@ -2,20 +2,27 @@ import java.util.Scanner;
 
 public class SandwichShop {
     public static double calculatedFinalPrice(double sandwichPrice,double discountRate){
-        double FinalPrice = sandwichPrice - (sandwichPrice * discountRate);
-        return FinalPrice;
+        double calculateFinalPrice = sandwichPrice - (sandwichPrice * discountRate);
+        return calculateFinalPrice;
 
     }
 
     public static void main(String[] args){
+
+
+        //input
+
         Scanner input = new Scanner(System.in);
         String regularSandwich = "Regular Sandwich";
         String largeSandwich = "Large Sandwich";
         double regularPrice = 5.45;
         double largePrice = 8.95;
+        double discountSeniorPercentage = 0.2;
+        double discountChildPercentage = 0.1;
         double discountedPrice = 0;
         String selectedSandwich;
         double selectedSandwichPrice;
+        double finalPrice;
 
 
         System.out.println("Welcome to the Sandwich Shop!");
@@ -38,26 +45,29 @@ public class SandwichShop {
             selectedSandwichPrice = 0;
         }
 
-        System.out.printf("Sandwich choice is: %d which is a %s and cost $%.2f \n", sandwichChoice, selectedSandwich, selectedSandwichPrice);
+
         System.out.println("What is your age?");
         int age = input.nextInt();
 
+//        Calculate
 
         if (age <= 17) {
             System.out.println("You are eligibile for a 10% discount");
-            double finalPrice = calculatedFinalPrice(selectedSandwichPrice, 0.1);
-            System.out.printf("Your final price after discount is $%.2f", finalPrice);
+            finalPrice = calculatedFinalPrice(selectedSandwichPrice, discountChildPercentage);
+
 
 
 
         } else if (age >= 65 ){
-
             System.out.println("You are eligibile for a senior 20% discount");
-            double finalPrice = calculatedFinalPrice(selectedSandwichPrice, 0.2);
-            System.out.printf("Your final price after discount is $%.2f", finalPrice);
+            finalPrice = calculatedFinalPrice(selectedSandwichPrice, discountSeniorPercentage);
         } else {
-            System.out.printf("Your final price for a %s is $%.2f", selectedSandwich, selectedSandwichPrice);
+            finalPrice = calculatedFinalPrice(selectedSandwichPrice, 0);
         }
+
+        //all of your display goes here... aka output
+        System.out.printf("Sandwich choice is: %d which is a %s and cost $%.2f \n", sandwichChoice, selectedSandwich, selectedSandwichPrice);
+        System.out.printf("Your total for %s: $%.2f", selectedSandwich, finalPrice);
 
     }
 
