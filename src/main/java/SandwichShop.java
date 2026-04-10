@@ -23,6 +23,9 @@ public class SandwichShop {
         String selectedSandwich;
         double selectedSandwichPrice;
         double finalPrice;
+        double appliedDiscountPercentage;
+        boolean appliedDiscount;
+        String finalOutput;
 
 
         System.out.println("Welcome to the Sandwich Shop!");
@@ -52,22 +55,37 @@ public class SandwichShop {
 //        Calculate
 
         if (age <= 17) {
-            System.out.println("You are eligibile for a 10% discount");
             finalPrice = calculatedFinalPrice(selectedSandwichPrice, discountChildPercentage);
-
+            appliedDiscount = true;
+            appliedDiscountPercentage = discountChildPercentage;
+            finalOutput = "Customers who are 17 and below gets a 10% discount! This discount has been automatically applied for you";
 
 
 
         } else if (age >= 65 ){
-            System.out.println("You are eligibile for a senior 20% discount");
             finalPrice = calculatedFinalPrice(selectedSandwichPrice, discountSeniorPercentage);
+            appliedDiscount = true;
+            appliedDiscountPercentage = discountSeniorPercentage;
+            finalOutput = "Customers who are 65 and above gets a 20% discount! This discount has been automatically applied for you";
         } else {
             finalPrice = calculatedFinalPrice(selectedSandwichPrice, 0);
+            appliedDiscount = false;
+            appliedDiscountPercentage = 0;
+            finalOutput = "Thank you for being a customer as Sandwich Shop Inc. We look forward to seeing you back";
         }
 
+
         //all of your display goes here... aka output
-        System.out.printf("Sandwich choice is: %d which is a %s and cost $%.2f \n", sandwichChoice, selectedSandwich, selectedSandwichPrice);
-        System.out.printf("Your total for %s: $%.2f", selectedSandwich, finalPrice);
+//        System.out.printf("Sandwich choice is: %d which is a %s and cost $%.2f \n", sandwichChoice, selectedSandwich, selectedSandwichPrice);
+//        System.out.printf("Your total for %s: $%.2f \n", selectedSandwich, finalPrice);
+
+//        Reciept Design
+
+        System.out.println("|======RECIEPT======|");
+        System.out.printf("Customer: Demo \n");
+        System.out.printf("%s - $%.2f \n", selectedSandwich, selectedSandwichPrice);
+        System.out.printf("Applied Discount, %.0f%%  \n", appliedDiscountPercentage * 100);
+        System.out.printf("Total: $%.2f \n", finalPrice);
 
     }
 
