@@ -71,21 +71,23 @@ public class SandwichShop {
             finalPrice = calculatedFinalPrice(selectedSandwichPrice, 0);
             appliedDiscount = false;
             appliedDiscountPercentage = 0;
-            finalOutput = "Thank you for being a customer as Sandwich Shop Inc. We look forward to seeing you back";
+            finalOutput = "Thank you for being a customer at Sandwich Shop Inc. We look forward to seeing you back";
         }
 
 
-        //all of your display goes here... aka output
+        //output
 //        System.out.printf("Sandwich choice is: %d which is a %s and cost $%.2f \n", sandwichChoice, selectedSandwich, selectedSandwichPrice);
 //        System.out.printf("Your total for %s: $%.2f \n", selectedSandwich, finalPrice);
 
-//        Reciept Design
-
         System.out.println("|======RECIEPT======|");
         System.out.printf("Customer: Demo \n");
-        System.out.printf("%s - $%.2f \n", selectedSandwich, selectedSandwichPrice);
-        System.out.printf("Applied Discount, %.0f%%  \n", appliedDiscountPercentage * 100);
+        System.out.printf("%s: $%.2f \n", selectedSandwich, selectedSandwichPrice);
+       if (appliedDiscount == true) {
+           System.out.printf("Applied Discount: %.0f%%  \n", appliedDiscountPercentage * 100);
+       }
         System.out.printf("Total: $%.2f \n", finalPrice);
+        System.out.printf("|======| %s |======|", finalOutput);
+
 
     }
 
